@@ -1,28 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
-function Navbar() {
+const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <nav className="top-nav">
-      <div className="nav-brand">
-        <Link to="/">
-          <img src="/logo.png" alt="SudaStock" className="nav-logo" />
+    <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+      <div className="navbar-container">
+        <Link to="/" className="logo-container">
+          <img src="/logo.png" alt="Logo" className="logo" />
         </Link>
-      </div>
-      <div className="nav-links">
-        <Link to="/" className="active">HOME</Link>
-        <Link to="/about">ABOUT US</Link>
-        <Link to="/products">PRODUCTS</Link>
-        <Link to="/data">DATA</Link>
-        <Link to="/contact">CONTACT US</Link>
-      </div>
-      <div className="nav-auth">
-        <Link to="/login" className="login-btn">LOGIN</Link>
-        <button className="lang-btn">عربي</button>
+        
+        <div className="nav-links">
+          <Link to="/" className="nav-link">HOME</Link>
+          <Link to="/about" className="nav-link">ABOUT</Link>
+          <Link to="/products" className="nav-link">PRODUCTS</Link>
+          <Link to="/contact" className="nav-link">CONTACT</Link>
+          <Link to="/login" className="nav-link login-btn">LOGIN</Link>
+        </div>
       </div>
     </nav>
   );
-}
+};
 
 export default Navbar;
