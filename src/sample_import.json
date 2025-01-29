@@ -1,0 +1,27 @@
+{
+  "products": [
+    {
+      "name": "Product 1",
+      "image": "product1.jpg",
+      "description": "Description for product 1",
+      "specifications": "Specs for product 1",
+      "fob_sdpzu": 100,
+      "cnf_aejea": 120,
+      "cnf_inach1": 130,
+      "cnf_cnahk": 140,
+      "cnf_trmer": 150,
+      "last_update": "2025-01-29",
+      "forecast": "up"
+    }
+  ],
+  "currencies": [
+    {
+      "name": "USD",
+      "unit": "Dollar",
+      "flag": "usa-flag.png",
+      "central_bank": 1.0,
+      "parallel_market": 1.0,
+      "indicator": "stable"
+    }
+  ]
+}
